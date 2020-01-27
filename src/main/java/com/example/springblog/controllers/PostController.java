@@ -3,21 +3,33 @@ package com.example.springblog.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class PostController {
 
-    @GetMapping("/post")
+    @GetMapping("/posts")
     @ResponseBody
-    public String hello() {
-        return "Hello World!";
+    public String postsIndex() {
+        return "Displaying all posts...";
     }
 
-    @GetMapping("/post/{cohort}")
+    @GetMapping("/posts/{id}")
     @ResponseBody
+    public String viewPost(@PathVariable int id) {
+        return "Viewing a single post";
+    }
 
-    public String hello(@PathVariable String cohort) {
-        return "Hello " + cohort;
+    @GetMapping("/posts/create")
+    @ResponseBody
+    public String createPostForm() {
+        return "Displaying Create POst Form...";
+    }
+
+    @PostMapping("/posts/create")
+    @ResponseBody
+    public String submitPost() {
+        return "Creating a new post...";
     }
 }
